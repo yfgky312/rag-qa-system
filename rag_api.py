@@ -4,13 +4,16 @@ from fastapi import FastAPI, HTTPException, UploadFile, File
 from pydantic import BaseModel
 from openai import OpenAI
 import torch
+from dotenv import load_dotenv
+load_dotenv()
 
 # 文档解析库
 from pypdf import PdfReader
 from docx import Document
 
 # 配置
-DEEPSEEK_API_KEY = "sk-6f58756dad724ac6b91dacb88292a76e"
+import os
+DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY")
 
 app = FastAPI(title="RAG 问答 API", description="支持多种文档格式的智能问答系统")
 client = OpenAI(api_key=DEEPSEEK_API_KEY, base_url="https://api.deepseek.com/v1")
