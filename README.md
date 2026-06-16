@@ -1,25 +1,38 @@
-# RAG 智能问答系统
+# RAG 智能问答 API
 
-基于 DeepSeek API + LangChain 的 RAG 问答系统，支持从文档中检索内容并生成回答。
+基于 FastAPI + DeepSeek 的文档问答服务，支持多格式文档上传和流式输出。
 
-## 功能特点
+## 功能
 
-- 支持 TXT 文档加载
-- 文本分块处理（可调 chunk_size）
-- 基于向量检索的相似度匹配
-- 调用 DeepSeek API 生成回答
-- GPU 加速（PyTorch CUDA）
-
-## 技术栈
-
-- Python 3.12
-- PyTorch (GPU)
-- LangChain
-- DeepSeek API
-- FastEmbed
+- 📄 支持 TXT、PDF、Word 文档上传
+- 🤖 基于 DeepSeek API 智能问答
+- ⚡ 流式输出
+- 📚 自动生成 Swagger API 文档
+- 🔒 环境变量管理 API Key
 
 ## 快速开始
 
 ```bash
+# 安装依赖
 pip install -r requirements.txt
-python rag_complete.py
+
+# 启动服务
+uvicorn rag_api:app --reload
+```
+
+## API 接口
+
+| 接口 | 方法 | 说明 |
+|------|------|------|
+| /ask_with_file | POST | 上传文档并提问 |
+| /ask_with_file_stream | POST | 流式输出版本 |
+| /docs | GET | Swagger API 文档 |
+| /health | GET | 健康检查 |
+
+## 技术栈
+
+- Python 3.12
+- FastAPI
+- DeepSeek API
+- PyPDF2 / python-docx
+- python-dotenv
