@@ -1,6 +1,6 @@
-# RAG 智能问答 API
+# RAG 多格式文档问答 API
 
-基于 FastAPI + DeepSeek 的文档问答服务，支持多格式文档上传和流式输出。
+支持 TXT / PDF / Word 上传，基于分块+向量检索+DeepSeek 大模型，返回文档相关答案
 
 ## 功能
 
@@ -31,8 +31,14 @@ uvicorn rag_api:app --reload
 
 ## 技术栈
 
-- Python 3.12
-- FastAPI
-- DeepSeek API
-- PyPDF2 / python-docx
-- python-dotenv
+| 技术 | 用途 |
+|------|------|
+|Python 3.12| 开发语言|
+|FastAPI API| 框架|
+|DeepSeek API |大模型|
+|LangChain| 分块 + 向量检索|
+|ChromaDB| 向量数据库|
+|HuggingFace Embeddings |文本向量化|
+|PyPDF2 / python-docx |文档解析|
+|python-dotenv| 环境变量管理|
+|uvicorn| 服务部署|
