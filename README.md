@@ -4,21 +4,12 @@
 
 ## 功能
 
-- 📄 支持 TXT、PDF、Word 文档上传
-- 🤖 基于 DeepSeek API 智能问答
-- ⚡ 流式输出
-- 📚 自动生成 Swagger API 文档
-- 🔒 环境变量管理 API Key
-
-## 快速开始
-
-```bash
-# 安装依赖
-pip install -r requirements.txt
-
-# 启动服务
-uvicorn rag_api:app --reload
-```
+功能 说明
+📄 多格式上传 TXT / PDF / Word
+✂️ 智能分块 自动分块，支持长文档
+🔍 向量检索 基于语义相似度检索相关内容
+🤖 大模型生成 DeepSeek 基于文档内容回答
+📚 API 文档 Swagger 自动生成
 
 ## API 接口
 
@@ -42,3 +33,19 @@ uvicorn rag_api:app --reload
 |PyPDF2 / python-docx |文档解析|
 |python-dotenv| 环境变量管理|
 |uvicorn| 服务部署|
+
+## 快速开始
+
+```bash
+# 1. 克隆项目
+git clone https://github.com/yfgky312/rag-qa-system.git
+
+# 2. 安装依赖
+pip install -r requirements.txt
+
+# 3. 配置环境变量
+cp .env.example .env
+# 编辑 .env 填入 DEEPSEEK_API_KEY
+
+# 4. 启动服务
+uvicorn rag_api:app --reload
